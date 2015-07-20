@@ -10,10 +10,10 @@ import retrofit.http.GET;
 
 public interface Api {
 
-    @GET("/discover/movie?sort_by=popularity.desc&api_key={API-KEY}")
+    @GET("/discover/movie?sort_by=popularity.desc&api_key=ae066f4966c3265df3df63177b063567")
     void getData(Callback<ApiResponse> response);
 
-    @GET("/discover/movie?sort_by=vote_average.desc&api_key={API-KEY}")
+    @GET("/discover/movie?sort_by=vote_average.desc&api_key=ae066f4966c3265df3df63177b063567")
     void getHighRated(Callback<ApiResponse> response);
 
 }

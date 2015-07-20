@@ -13,14 +13,17 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.techtach.movieapp.model.Movies;
 
+import java.util.ArrayList;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DetailFragment extends Fragment {
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     private Movies mMovies;
-
+    private int position;
     private Context mContext;
+    private ArrayList<Movies> movies;
 
     private TextView MOVIE_TITLE_TEXT_VIEW;
     private ImageView MOVIE_IMAGE_VIEW;
@@ -43,11 +46,14 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getActivity().getIntent().getExtras();
-        mMovies = getActivity().getIntent().getParcelableExtra("MOVIES");
+        movies = getActivity().getIntent().getParcelableArrayListExtra("MOVIES");
+        position =  getActivity().getIntent().getIntExtra("POSITION", 0 );
+        mMovies = movies.get(position);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("movies", movies);
         super.onSaveInstanceState(outState);
     }
 
