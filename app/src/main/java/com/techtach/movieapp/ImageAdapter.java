@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.techtach.movieapp.model.Movies;
@@ -19,8 +18,12 @@ public class ImageAdapter<M> extends BaseAdapter {
     String BASE_URL = "http://image.tmdb.org/t/p/w342/";
     private Context mContext;
     private ArrayList<Movies> movieList;
-
     private final LayoutInflater mInflater;
+
+
+    private static class ViewHolder{
+        ImageView mImage;
+    }
 
     public ImageAdapter(Context context, int fragment_main, int resource, ArrayList<Movies>objects)  {
         mInflater = LayoutInflater.from(context);
@@ -46,23 +49,25 @@ public class ImageAdapter<M> extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        View v = view;
-        ImageView picture;
-        TextView name;
+        Movies movies = getItem(position);
+        ViewHolder viewHolder;
 
-        if (v == null) {
-            v = mInflater.inflate(R.layout.grid_item, viewGroup, false);
-            v.setTag(R.id.picture, v.findViewById(R.id.picture));
+        if (view == null) {
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+
+            view = mInflater.inflate(R.layout.grid_item, viewGroup, false);
+            viewHolder.mImage = (ImageView) view.findViewById(R.id.picture);
+            view.setTag(viewHolder);
         }
-
-        picture = (ImageView) v.getTag(R.id.picture);
+        else {
+          viewHolder = (ViewHolder) view.getTag();
+        }
 
         //poster path URL
-        Movies movie = movieList.get(position);
-        if (movie!=null){
-            Picasso.with(mContext).load(BASE_URL+movie.getPoster_path()).into(picture);
+        if (movies!=null){
+            Picasso.with(mContext).load(BASE_URL+movies.getPoster_path()).into(viewHolder.mImage);
         }
-
-        return v;
+        return view;
     }
 }
