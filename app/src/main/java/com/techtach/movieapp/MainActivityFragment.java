@@ -59,15 +59,13 @@ public class MainActivityFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_Rating){
+        if (id == R.id.action_Rating && isNetworkAvailable()) {
             fetchMovies.fetchMovies("vote_average.desc");
             fetchMovies.createImageAdapter();
-        }
-        else if (id == R.id.action_Popular){
+        } else if (id == R.id.action_Popular && isNetworkAvailable()) {
             fetchMovies.fetchMovies("popularity.desc");
             fetchMovies.createImageAdapter();
-        }
-        else if (id == R.id.action_settings) {
+        } else if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -88,11 +86,9 @@ public class MainActivityFragment extends Fragment {
         if (savedInstanceState != null) {
             movieList = savedInstanceState.getParcelableArrayList("movies");
             fetchMovies.createImageAdapter();
-        }
-        else if (isNetworkAvailable()){
+        } else if (isNetworkAvailable()) {
             fetchMovies.fetchMovies("popularity.desc");
-        }
-        else{
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), "No internet connection ", Toast.LENGTH_LONG).show();
         }
 
@@ -112,22 +108,23 @@ public class MainActivityFragment extends Fragment {
         private final String LOG_TAG = FetchMovies.class.getSimpleName();
 
         private void fetchMovies(String sort) {
-            RequestInterceptor requestInterceptor = new RequestInterceptor() {
-                @Override
-                public void intercept(RequestFacade request) {
-                    request.addHeader("User-Agent", "Retrofit-Sample-App");
-                }
-            };
+            String key = "ae066f4966c3265df3df63177b063567"; // API KEY
+            try {
+                RequestInterceptor requestInterceptor = new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("User-Agent", "Retrofit-Sample-App");
+                    }
+                };
 
-            final RestAdapter restAdapter = new RestAdapter
-                    .Builder()
-                    .setEndpoint(ENDPOINT_URL)
-                    .setRequestInterceptor(requestInterceptor)
-                    .build();
-            final Api movieApi = restAdapter.create(Api.class);
+                final RestAdapter restAdapter = new RestAdapter
+                        .Builder()
+                        .setEndpoint(ENDPOINT_URL)
+                        .setRequestInterceptor(requestInterceptor)
+                        .build();
+                final Api movieApi = restAdapter.create(Api.class);
 
-            if (sort == "popularity.desc"){
-                movieApi.getData(new Callback<ApiResponse>() {
+                movieApi.getData(sort, key, new Callback<ApiResponse>() {
                     @Override
                     public void success(ApiResponse movies, Response response) {
                         movieList = (ArrayList<Movies>) movies.getResults();
@@ -138,25 +135,12 @@ public class MainActivityFragment extends Fragment {
 
                     @Override
                     public void failure(RetrofitError error) {
-                        //Toast.makeText(getActivity().getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
-            else if (sort == "vote_average.desc"){
-                movieApi.getHighRated(new Callback<ApiResponse>() {
-                    @Override
-                    public void success(ApiResponse movies, Response response) {
-                        movieList = (ArrayList<Movies>) movies.getResults();
-                        Log.d("Response", movieList.toString());
-                        Toast.makeText(getActivity().getApplicationContext(), "fetched " + movieList.size() + "Objects", Toast.LENGTH_SHORT).show();
-                        createImageAdapter();
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        //Toast.makeText(getActivity().getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            } catch ( Exception e) {
+                Log.e(LOG_TAG, "GHANTA ERROR ", e);
+                // If the code didn't successfully get the Movie data, there's no point in attemping
             }
         }
 
@@ -173,7 +157,7 @@ public class MainActivityFragment extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(getActivity(), DetailActivity.class);
                     intent.putExtra("MOVIES", movieList);
-                    intent.putExtra("POSITION",position);
+                    intent.putExtra("POSITION", position);
                     startActivity(intent);
                 }
             });
