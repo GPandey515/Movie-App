@@ -109,8 +109,8 @@ public class MainActivityFragment extends Fragment {
         private final String LOG_TAG = FetchMovies.class.getSimpleName();
 
         private void fetchMovies(String sort) {
-            String key = "ae066f4966c3265df3df63177b063567"; // API KEY
-            try {
+            String key = getResources().getString(R.string.api_key); // API KEY
+
                 RequestInterceptor requestInterceptor = new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
@@ -139,10 +139,6 @@ public class MainActivityFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-            } catch ( Exception e) {
-                Log.e(LOG_TAG, "GHANTA ERROR ", e);
-                // If the code didn't successfully get the Movie data, there's no point in attemping
-            }
         }
 
         public void createImageAdapter() {
