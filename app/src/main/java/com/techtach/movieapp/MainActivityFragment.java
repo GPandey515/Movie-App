@@ -2,9 +2,11 @@ package com.techtach.movieapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ import retrofit.client.Response;
 public class MainActivityFragment extends Fragment {
     private static final String LOG_TAG = MainActivityFragment.class.getSimpleName();
     public static final String ENDPOINT_URL = "http://api.themoviedb.org/3";
+    private static String sort;
 
     private ImageAdapter<Movies> mImageAdapter;
     ArrayList<Movies> movieList;
@@ -48,6 +51,11 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Read sort from preference to display according to user preference
+        //else display default preference
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        sort = prefs.getString(getString(R.string.pref_sort),
+                getString(R.string.pref_sort_default));
         setHasOptionsMenu(true);
     }
 
@@ -65,9 +73,14 @@ public class MainActivityFragment extends Fragment {
         } else if (id == R.id.action_Popular && isNetworkAvailable()) {
             fetchMovies.fetchMovies("popularity.desc");
             fetchMovies.createImageAdapter();
-        } else if (id == R.id.action_settings) {
+        }else if(id == R.id.action_refresh && isNetworkAvailable()){
+            fetchMovies.fetchMovies(sort);
+            fetchMovies.createImageAdapter();
+        }
+        else if (id == R.id.action_settings) {
             return true;
         }
+        Toast.makeText(getActivity().getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
         return super.onOptionsItemSelected(item);
     }
 
@@ -84,11 +97,13 @@ public class MainActivityFragment extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         gridView = (GridView) rootView.findViewById(R.id.gridview);
+
+        //check if instance is saved and display from savedInstanceState else fetch from server
         if (savedInstanceState != null) {
             movieList = savedInstanceState.getParcelableArrayList("movies");
             fetchMovies.createImageAdapter();
         } else if (isNetworkAvailable()) {
-            fetchMovies.fetchMovies("popularity.desc");
+            fetchMovies.fetchMovies(sort);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), "No internet connection ", Toast.LENGTH_LONG).show();
         }

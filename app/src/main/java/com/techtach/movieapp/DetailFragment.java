@@ -1,9 +1,13 @@
 package com.techtach.movieapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,6 +33,7 @@ public class DetailFragment extends Fragment {
     private String mRatingText;
     private String mDate;
     private String mLength;
+    private String textShare;
 
     public static class ViewHolder{
         TextView mTitleTextView;
@@ -43,6 +48,7 @@ public class DetailFragment extends Fragment {
     }
 
     public DetailFragment() {
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -61,9 +67,18 @@ public class DetailFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_detail, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+       // ShareActionProvider mshareActionProvider =
+       //         (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+
         ViewHolder viewHolder = new ViewHolder(); //Viewholder cache stored in tag
 
         viewHolder.mTitleTextView = (TextView) rootView.findViewById(R.id.title_text);
@@ -92,6 +107,15 @@ public class DetailFragment extends Fragment {
 
     private void updateDetails() {
 
+    }
+
+    private Intent createShareMoviesIntent(){
+        Intent shareMovieIntent = new Intent();
+        shareMovieIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        shareMovieIntent.setType("text/plain");
+        shareMovieIntent.putExtra(Intent.EXTRA_TEXT,
+                textShare + "#GaneshPandey");
+        return shareMovieIntent;
     }
 
 }
