@@ -47,7 +47,6 @@ public class MainActivityFragment extends Fragment {
     public MainActivityFragment() {
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,13 +73,16 @@ public class MainActivityFragment extends Fragment {
             fetchMovies.fetchMovies("popularity.desc");
             fetchMovies.createImageAdapter();
         }else if(id == R.id.action_refresh && isNetworkAvailable()){
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            sort = prefs.getString(getString(R.string.pref_sort),
+                    getString(R.string.pref_sort_default));
             fetchMovies.fetchMovies(sort);
             fetchMovies.createImageAdapter();
         }
         else if (id == R.id.action_settings) {
             return true;
         }
-        Toast.makeText(getActivity().getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity().getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
         return super.onOptionsItemSelected(item);
     }
 

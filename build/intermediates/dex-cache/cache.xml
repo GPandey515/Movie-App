@@ -2,60 +2,60 @@
 <items version="2" >
 
     <item
-        jar="/home/noones/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a681c044244d9fc375198588297a39ba78028423">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-123d4f1ed9e7f6cba9efe3c20b240b972cc5c2ed.jar" />
-    </item>
-    <item
-        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-fce8675096ce1ff571274d1ce7283a6d48143092.jar" />
-    </item>
-    <item
-        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/classes-2e034ed2e898e58e321b84790f8b064777f83c6c.jar" />
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/classes-78ca111f70d649a521571c64b3c627ab70670eda.jar" />
     </item>
     <item
         jar="/home/noones/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/gson-2.3.1-e9e01353403671cabdbba7c24f87e3cf9a46433b.jar" />
-    </item>
-    <item
-        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/classes-78ca111f70d649a521571c64b3c627ab70670eda.jar" />
-    </item>
-    <item
-        jar="/home/noones/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-b494561008a6cb4dbe1a1d49d2d02d0a6158a50d.jar" />
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/gson-2.3.1-e9e01353403671cabdbba7c24f87e3cf9a46433b.jar" />
     </item>
     <item
         jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/classes-b58c1a1062fccdf426e2a19bfb33c78bc6e466d8.jar" />
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/classes-b58c1a1062fccdf426e2a19bfb33c78bc6e466d8.jar" />
     </item>
     <item
         jar="/home/noones/Programs/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-eee59a2d0eecd76fa14e145d4f10299b47e9a19f.jar" />
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/support-annotations-22.2.0-eee59a2d0eecd76fa14e145d4f10299b47e9a19f.jar" />
+    </item>
+    <item
+        jar="/home/noones/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/retrofit-1.9.0-123d4f1ed9e7f6cba9efe3c20b240b972cc5c2ed.jar" />
+    </item>
+    <item
+        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/classes-2e034ed2e898e58e321b84790f8b064777f83c6c.jar" />
+    </item>
+    <item
+        jar="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/internal_impl-22.2.0-fce8675096ce1ff571274d1ce7283a6d48143092.jar" />
+    </item>
+    <item
+        jar="/home/noones/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/noones/AndroidStudioProjects/Movie-App/app/build/intermediates/pre-dexed/release/picasso-2.5.2-b494561008a6cb4dbe1a1d49d2d02d0a6158a50d.jar" />
     </item>
 
 </items>
